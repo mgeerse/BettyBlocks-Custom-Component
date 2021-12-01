@@ -13,10 +13,13 @@
           value: 'Title1',
         },
         {
-          type: 'TEXT',
+          type: 'VARIABLE',
           label: 'Content',
           key: 'content',
-          value: 'Hello World!',
+          value: [],
+          configuration: {
+            as: 'MULTILINE',
+          },
         },
         {
           type: 'CUSTOM',

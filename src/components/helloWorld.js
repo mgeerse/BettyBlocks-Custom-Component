@@ -5,6 +5,9 @@
   orientation: 'HORIZONTAL',
   allowedTypes: [],
   jsx: (() => {
+    const { env, useText } = B;
+    const isDev = env === 'dev';
+
     const Tag = {
       Title1: 'h1',
       Title2: 'h2',
@@ -15,7 +18,24 @@
       Body1: 'p',
       Body2: 'p',
     }[options.type || 'Title1'];
-    return <Tag className={classes.root}>{options.content}</Tag>;
+
+    function devEnv() {
+      return (
+        <div>
+          <Tag className={classes.root}>{useText(options.content)}</Tag>
+        </div>
+      );
+    }
+
+    function prodEnv() {
+      return (
+        <div>
+          <Tag className={classes.root}>{useText(options.content)}</Tag>
+        </div>
+      );
+    }
+
+    return isDev ? devEnv() : prodEnv();
   })(),
   styles: B => t => {
     const style = new B.Styling(t);
