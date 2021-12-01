@@ -5,7 +5,11 @@
   orientation: 'HORIZONTAL',
   allowedTypes: [],
   jsx: (() => {
-    const { env, useText } = B;
+    const { env, useText, Link } = B;
+    const { externalPageTo, internalPageTo, linkType } = options;
+    const hasLink = linkType !== 'noLink';
+    const hasExternalLink = linkType === 'external';
+    const hasInternalLink = linkType === 'internal';
     const isDev = env === 'dev';
 
     const Tag = {
@@ -26,11 +30,29 @@
         </div>
       );
     }
-
+    console.log(externalPageTo);
     function prodEnv() {
       return (
         <div>
           <Tag className={classes.root}>{useText(options.content)}</Tag>
+          {hasLink && hasExternalLink ? (
+            <a
+              className={classes.root}
+              href={externalPageTo}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Follow link
+            </a>
+          ) : (
+            <Link
+              className={classes.root}
+              href={internalPageTo}
+              endpoint={internalPageTo}
+            >
+              Follow link
+            </Link>
+          )}
         </div>
       );
     }
