@@ -1,5 +1,5 @@
 (() => ({
-  name: 'HelloWorld',
+  name: 'Custom Text Component',
   type: 'BODY_COMPONENT',
   icon: 'TitleIcon',
   orientation: 'HORIZONTAL',
@@ -97,8 +97,8 @@
             : getPath(['theme', 'typography', fontType, 'fontFamily'], style),
         fontSize: ({ options: { styles, fontType } }) =>
           styles ? style.getFontSize(fontType) : style.getFontSize('Title1'),
-        fontStyle: ({ options: { styles, fontItalic } }) =>
-          styles && fontItalic ? 'italic' : 'none',
+        fontStyle: ({ options: { fontItalic } }) =>
+          fontItalic ? 'italic' : 'normal',
         textTransform: ({ options: { fontType } }) =>
           style.getTextTransform(fontType),
         letterSpacing: ({ options: { fontType } }) =>
