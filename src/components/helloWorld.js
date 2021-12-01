@@ -7,9 +7,9 @@
   jsx: (() => {
     const { env, useText, Link } = B;
     const { externalPageTo, internalPageTo, linkType } = options;
+
     const hasLink = linkType !== 'noLink';
     const hasExternalLink = linkType === 'external';
-    const hasInternalLink = linkType === 'internal';
     const isDev = env === 'dev';
 
     const Tag = {
@@ -26,7 +26,11 @@
     function devEnv() {
       return (
         <div>
-          <Tag className={classes.root}>{useText(options.content)}</Tag>
+          <Tag className={classes.root}>
+            {useText(options.content) === ''
+              ? 'Empty content...'
+              : useText(options.content)}
+          </Tag>
         </div>
       );
     }
@@ -64,6 +68,15 @@
   })(),
   styles: B => t => {
     const style = new B.Styling(t);
+
+    const getPath = (path, data) =>
+      path.reduce((acc, next) => {
+        if (acc === undefined || acc[next] === undefined) {
+          return undefined;
+        }
+        return acc[next];
+      }, data);
+
     return {
       root: {
         boxSizing: 'border-box',
@@ -78,13 +91,27 @@
           style.getSpacing(padding[2], 'Desktop'),
         paddingLeft: ({ options: { padding } }) =>
           style.getSpacing(padding[3], 'Desktop'),
-        fontFamily: ({ options: { type } }) => style.getFontFamily(type),
-        fontSize: ({ options: { type } }) => style.getFontSize(type),
-        textTransform: ({ options: { type } }) => style.getTextTransform(type),
-        fontWeight: ({ options: { type } }) => style.getFontWeight(type),
-        letterSpacing: ({ options: { type } }) => style.getLetterSpacing(type),
+        fontFamily: ({ options: { styles, fontType } }) =>
+          styles
+            ? style.getFontFamily(fontType)
+            : getPath(['theme', 'typography', fontType, 'fontFamily'], style),
+        fontSize: ({ options: { styles, fontType } }) =>
+          styles ? style.getFontSize(fontType) : style.getFontSize('Title1'),
+        fontStyle: ({ options: { styles, fontItalic } }) =>
+          styles && fontItalic ? 'italic' : 'none',
+        textTransform: ({ options: { fontType } }) =>
+          style.getTextTransform(fontType),
+        letterSpacing: ({ options: { fontType } }) =>
+          style.getLetterSpacing(fontType),
+        fontWeight: ({ options: { styles, fontType, fontWeight } }) =>
+          styles
+            ? fontWeight
+            : getPath(['theme', 'typography', fontType, 'fontWeight'], style),
+        color: ({ options: { styles, fontType, fontColor } }) =>
+          styles
+            ? style.getColor(fontColor)
+            : getPath(['theme', 'typography', fontType, 'color'], style),
         textAlign: ({ options: { align } }) => align,
-        color: ({ options: { color } }) => style.getColor(color),
       },
     };
   },
