@@ -30,29 +30,32 @@
         </div>
       );
     }
-    console.log(externalPageTo);
+
     function prodEnv() {
       return (
         <div>
-          <Tag className={classes.root}>{useText(options.content)}</Tag>
-          {hasLink && hasExternalLink ? (
-            <a
-              className={classes.root}
-              href={externalPageTo}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Follow link
-            </a>
-          ) : (
-            <Link
-              className={classes.root}
-              href={internalPageTo}
-              endpoint={internalPageTo}
-            >
-              Follow link
-            </Link>
-          )}
+          <Tag className={classes.root}>
+            {useText(options.content)}
+            <br />
+            {hasLink && hasExternalLink ? (
+              <a
+                className={classes.root}
+                href={externalPageTo}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Follow link
+              </a>
+            ) : (
+              <Link
+                className={classes.root}
+                href={internalPageTo}
+                endpoint={internalPageTo}
+              >
+                Follow link
+              </Link>
+            )}
+          </Tag>
         </div>
       );
     }
