@@ -62,6 +62,15 @@
             },
           },
         },
+        {
+          value: { label: ['Slider number input'] },
+          label: 'Label',
+          key: 'sliderCustomModelAttribute',
+          type: 'CUSTOM_MODEL_ATTRIBUTE',
+          configuration: {
+            allowedTypes: ['integer'],
+          },
+        },
       ],
       descendants: [],
     },
