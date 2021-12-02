@@ -1,20 +1,24 @@
 (() => ({
-  name: 'HelloWorld',
+  name: 'Custom Text Component',
   icon: 'TitleIcon',
   category: 'CONTENT',
   structure: [
     {
-      name: 'HelloWorld',
+      name: 'Custom Text Component',
       options: [
         {
           type: 'CUSTOM',
           label: 'link',
           key: 'linkType',
-          value: 'none',
+          value: 'noLink',
           configuration: {
             as: 'BUTTONGROUP',
             dataType: 'string',
             allowedInput: [
+              {
+                name: 'None',
+                value: 'noLink',
+              },
               {
                 name: 'External',
                 value: 'external',
@@ -22,10 +26,6 @@
               {
                 name: 'Internal',
                 value: 'internal',
-              },
-              {
-                name: 'None',
-                value: 'noLink',
               },
             ],
           },
