@@ -10,6 +10,7 @@
 
     const hasLink = linkType !== 'noLink';
     const hasExternalLink = linkType === 'external';
+    const hasInternalLink = linkType === 'internal';
     const isDev = env === 'dev';
 
     const Tag = {
@@ -51,6 +52,9 @@
                 Follow link
               </a>
             ) : (
+              <></>
+            )}
+            {hasLink && hasInternalLink ? (
               <Link
                 className={classes.root}
                 href={internalPageTo}
@@ -58,6 +62,8 @@
               >
                 Follow link
               </Link>
+            ) : (
+              <></>
             )}
           </Tag>
         </div>
