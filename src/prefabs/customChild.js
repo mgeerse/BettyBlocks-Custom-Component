@@ -5,7 +5,14 @@
   structure: [
     {
       name: 'Custom Child',
-      options: [],
+      options: [
+        {
+          type: 'COLOR',
+          label: 'Background color',
+          key: 'color',
+          value: 'Primary',
+        },
+      ],
       descendants: [],
     },
   ],
