@@ -19,7 +19,9 @@
               return <span>Error: {error.message}</span>;
             }
 
-            return <Property id={property} />;
+            if (data) {
+              return <Property id={property} />;
+            }
           }}
         </GetOne>
       </div>
