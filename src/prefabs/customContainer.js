@@ -1,7 +1,7 @@
 (() => ({
   name: 'Custom Container',
   icon: 'DataContainer',
-  category: 'LAYOUT',
+  category: 'PARENT',
   structure: [
     {
       name: 'Custom Container',

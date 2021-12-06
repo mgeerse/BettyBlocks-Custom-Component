@@ -1,6 +1,6 @@
 (() => ({
   name: 'Custom Single Betty Record',
-  icon: 'UnorderedListIcon',
+  icon: 'AutoCompleteIcon',
   category: 'CONTENT',
   structure: [
     {
