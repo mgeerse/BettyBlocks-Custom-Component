@@ -33,6 +33,7 @@
         boxSizing: 'center',
         alignItems: 'center',
         minHeight: ({ options: { height } }) => (height ? 0 : '1rem'),
+        height: '100%',
         backgroundColor: ({ options: { color } }) => style.getColor(color),
       },
     };
