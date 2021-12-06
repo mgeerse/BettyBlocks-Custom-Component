@@ -7,6 +7,15 @@
       name: 'Custom List',
       options: [
         {
+          type: 'PROPERTY',
+          label: 'Property',
+          key: 'property',
+          value: '',
+          configuration: {
+            dependsOn: 'model',
+          },
+        },
+        {
           type: 'FILTER',
           label: 'Filter',
           key: 'filter',
@@ -31,8 +40,8 @@
             dataType: 'string',
             allowedInput: [
               {
-                name: 'Numbered',
-                value: 'numbered',
+                name: 'Ordered',
+                value: 'ordered',
               },
               {
                 name: 'Unordered',
