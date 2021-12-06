@@ -10,6 +10,7 @@
     const isEmpty = children.length === 0;
     const isPristine = isEmpty && isDev;
 
+    // eslint-disable-next-line no-unused-vars
     const [backgroundColorState, setBackgroungColorState] = useState(color);
 
     const handleOnclick = (event, value) => {
