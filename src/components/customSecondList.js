@@ -8,6 +8,7 @@
     return <div className={classes.root}>{value}</div>;
   })(),
   styles: B => theme => {
+    // eslint-disable-next-line no-unused-vars
     const style = new B.Styling(theme);
     return {
       root: {},
