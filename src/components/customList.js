@@ -30,6 +30,10 @@
                     <li>
                       <Property id={selectedProperty} />
                     </li>
+                    <li>
+                      <Property id={selectedProperty} />
+                    </li>
+                    <li>...</li>
                   </Tag>
                 </div>
               );
@@ -48,6 +52,7 @@
     );
   })(),
   styles: B => theme => {
+    // eslint-disable-next-line no-unused-vars
     const style = new B.Styling(theme);
     return {
       root: {
