@@ -22,12 +22,15 @@
             if (data) {
               return <Property id={property} />;
             }
+
+            return <></>;
           }}
         </GetOne>
       </div>
     );
   })(),
   styles: B => theme => {
+    // eslint-disable-next-line no-unused-vars
     const style = new B.Styling(theme);
     return {
       root: {
